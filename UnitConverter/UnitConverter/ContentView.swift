@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var inputNumber = 0.0
     @State private var inputUnit = "m"
     @State private var outputUnit = "mi"
+    @FocusState private var numberIsFocused: Bool
     
     let lengthUnits = ["cm", "m", "km", "ft", "mi", "yd", "in"]
     
@@ -39,6 +40,7 @@ struct ContentView: View {
                 Section{
                     TextField("Number", value: $inputNumber, format: .number)
                         .keyboardType(.decimalPad)
+                        .focused($numberIsFocused)
                 }
                 Section{
                     Picker("Output unit", selection: $outputUnit){
@@ -57,6 +59,14 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Unit Converter")
+            .toolbar{
+                ToolbarItemGroup(placement: .keyboard){
+                    Spacer()
+                    Button("Done"){
+                        numberIsFocused = false
+                    }
+                }
+            }
         }
     }
 }
