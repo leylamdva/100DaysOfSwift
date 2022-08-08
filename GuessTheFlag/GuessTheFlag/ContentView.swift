@@ -78,6 +78,7 @@ struct ContentView: View {
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
             scoreTitle = "Correct"
+            alertMessage = ""
             score = score + 1
         } else {
             scoreTitle = "Wrong"
