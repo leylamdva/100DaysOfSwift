@@ -42,10 +42,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 5)
+                            FlagImage(country: countries[number])
                         }
                     }
                 }
@@ -102,6 +99,16 @@ struct ContentView: View {
         rounds = 0
         score = 0
         askQuestion()
+    }
+}
+
+struct FlagImage: View{
+    var country : String
+    var body: some View {
+        Image(country)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .shadow(radius: 5)
     }
 }
 
